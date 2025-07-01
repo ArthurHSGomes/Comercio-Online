@@ -1,7 +1,7 @@
-// ============================
-// Módulo: Cadastro de Vendedores
-// Responsável: Arthur Henrique Gomes
-// ============================
+
+// Modulo: Cadastro de Vendedores
+// Responsavel: Arthur Henrique Gomes
+
 
 #include <stdio.h>
 #include <string.h>
@@ -26,14 +26,14 @@ int inserirVendedor(Vendedor vendedores[], int *n) {
 
     Vendedor novo;
 
-    printf("\nNúmero do vendedor: ");
+    printf("\nNumero do vendedor: ");
     scanf("%d", &novo.numero);
     limparEntrada(); 
 
-    
+   
     for (int i = 0; i < *n; i++) {
         if (vendedores[i].numero == novo.numero) {
-            printf("\nErro: Vendedor com este número já existe.\n");
+            printf("\nErro: Vendedor com este numero ja existe.\n");
             return 0;
         }
     }
@@ -42,7 +42,7 @@ int inserirVendedor(Vendedor vendedores[], int *n) {
     fgets(novo.nome, sizeof(novo.nome), stdin);
     novo.nome[strcspn(novo.nome, "\n")] = 0; 
 
-    printf("Salário fixo: R$ ");
+    printf("Salario fixo: R$ ");
     scanf("%f", &novo.salario_fixo);
     limparEntrada(); 
 
@@ -56,13 +56,13 @@ int inserirVendedor(Vendedor vendedores[], int *n) {
 int consultarVendedor(Vendedor vendedores[], int n, int numero) {
     for (int i = 0; i < n; i++) {
         if (vendedores[i].numero == numero) {
-            printf("\nVendedor encontrado:\nNome: %s\nNúmero: %d\nSalário Fixo: R$%.2f\nComissão Total: R$%.2f\n",
+            printf("\nVendedor encontrado:\nNome: %s\nNumero: %d\nSalario Fixo: R$%.2f\nComissao Total: R$%.2f\n",
                    vendedores[i].nome, vendedores[i].numero,
                    vendedores[i].salario_fixo, vendedores[i].comissao_total);
             return i;
         }
     }
-    printf("\nVendedor não encontrado.\n");
+    printf("\nVendedor nao encontrado.\n");
     return -1;
 }
 
@@ -75,7 +75,7 @@ int alterarVendedor(Vendedor vendedores[], int n, int numero) {
     fgets(vendedores[idx].nome, sizeof(vendedores[idx].nome), stdin);
     vendedores[idx].nome[strcspn(vendedores[idx].nome, "\n")] = 0;
 
-    printf("Novo salário fixo: R$ ");
+    printf("Novo salario fixo: R$ ");
     scanf("%f", &vendedores[idx].salario_fixo);
     limparEntrada(); 
 
@@ -102,7 +102,7 @@ void atualizarComissao(Vendedor *v, float valor_venda) {
 void listarVendedores(Vendedor vendedores[], int n) {
     printf("\nLista de Vendedores:\n");
     for (int i = 0; i < n; i++) {
-        printf("%d - %s | Salário: R$%.2f | Comissão: R$%.2f\n",
+        printf("%d - %s | Salario: R$%.2f | Comissao: R$%.2f\n",
                vendedores[i].numero, vendedores[i].nome,
                vendedores[i].salario_fixo, vendedores[i].comissao_total);
     }
@@ -120,7 +120,7 @@ int main() {
         printf("4. Excluir Vendedor\n");
         printf("5. Listar Vendedores\n");
         printf("6. Sair\n");
-        printf("Escolha uma opção: ");
+        printf("Escolha uma opcao: ");
         scanf("%d", &opcao);
         limparEntrada(); 
 
@@ -129,30 +129,30 @@ int main() {
                 if (inserirVendedor(vendedores, &n)) {
                     printf("\nVendedor inserido com sucesso.\n");
                 } else {
-                    printf("\nNão foi possível inserir o vendedor.\n");
+                    printf("\nErro ao inserir vendedor.\n");
                 }
                 break;
             case 2:
-                printf("\nNúmero do vendedor a consultar: ");
+                printf("\nNumero do vendedor: ");
                 scanf("%d", &numero);
                 consultarVendedor(vendedores, n, numero);
                 break;
             case 3:
-                printf("\nNúmero do vendedor a alterar: ");
+                printf("\nNumero do vendedor: ");
                 scanf("%d", &numero);
                 if (alterarVendedor(vendedores, n, numero)) {
                     printf("\nVendedor alterado com sucesso.\n");
                 } else {
-                    printf("\nNão foi possível alterar o vendedor.\n");
+                    printf("\nErro ao alterar vendedor.\n");
                 }
                 break;
             case 4:
-                printf("\nNúmero do vendedor a excluir: ");
+                printf("\nNumero do vendedor: ");
                 scanf("%d", &numero);
                 if (excluirVendedor(vendedores, &n, numero)) {
-                    printf("\nVendedor excluído com sucesso.\n");
+                    printf("\nVendedor excluido com sucesso.\n");
                 } else {
-                    printf("\nNão foi possível excluir o vendedor.\n");
+                    printf("\nErro ao excluir vendedor.\n");
                 }
                 break;
             case 5:
@@ -162,7 +162,7 @@ int main() {
                 printf("\nSaindo...\n");
                 break;
             default:
-                printf("\nOpção inválida. Tente novamente.\n");
+                printf("\nOpcao invalida. Tente novamente.\n");
         }
     } while (opcao != 6);
 
