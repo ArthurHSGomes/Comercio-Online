@@ -1,6 +1,20 @@
 #ifndef EMISSAODENOTASFISCAIS_H
 #define EMISSAODENOTASFISCAIS_H
 
+#define MAX_ITENS 50
+
+typedef struct {
+    char nome_produto[100];
+    int codigo_produto;
+    float preco_unitario;
+} Produto;
+
+typedef struct {
+    char nome[100];
+    char cnpj[20];
+    char email[100];
+} Vendedor;
+
 typedef struct {
     char nome_produto[100];
     int codigo_produto;
@@ -24,11 +38,12 @@ typedef struct {
 
 typedef struct {
     int codigo;
-    ItemVenda itens[50];
+    ItemVenda itens[MAX_ITENS];
     int qtd_itens;
     float total_venda;
 } Venda;
 
 float calcularFrete(float total_venda);
+void emitirNotaFiscal(Venda venda, Comprador comprador);
 
 #endif // EMISSAODENOTASFISCAIS_H
